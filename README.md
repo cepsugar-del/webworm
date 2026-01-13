@@ -1,7 +1,7 @@
 # Scripture Guesser
 
 [My Notes](notes.md)
-*Really random idea, subjet to change*
+*Really random idea, subjet to change this may be more than I am capable of*
 My plan for this application is to create a game where people can compete against each other in a head-to head match to figure out what scripture is being referenced. I think I will do it where the scripture is revealed 1 word at a time in small time increments to allow the people playing to guess the word. I also think that players will accumulate points based on words remaining in the scripture. For example, if the scripture is Genisis 1:1 "In the beginning God created the heaven and the earth" a person who guessded on "In the beginning" would gain 7 points. There will be short matches between active players (or bots if I get to that point) and leaderboards showing who has won the most matches that day/week/month.
 > [!NOTE]
 > This is a template for your startup application. You must modify this `README.md` file for each phase of your development. You only need to fill in the section for each deliverable when that deliverable is submitted in Canvas. Without completing the section for a deliverable, the TA will not know what to look for when grading your submission. Feel free to add additional information to each deliverable description, but make sure you at least have the list of rubric items and a description of what you did for each item.
@@ -17,9 +17,9 @@ My plan for this application is to create a game where people can compete agains
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [ ] Proper use of Markdown
-- [ ] A concise and compelling elevator pitch
-- [ ] Description of key features
-- [ ] Description of how you will use each technology
+- [x] A concise and compelling elevator pitch
+- [x] Description of key features
+- [x] Description of how you will use each technology
 - [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
@@ -27,30 +27,24 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 Imagine the game geo-guesser, but for missionaries. Something fun to help them practice quickly finding the scriptures that come to mind. I want to create a game that will be competative, but fun, having people compete online with each other to quickly identify what scripture is being referenced, accumulating points, and climbing the leaderboards. How fast can they find the scripture and submint their answer?
 ### Design
 
-![Design image](placeholder.png)
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-```mermaid
-sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
-```
+![Design image] (I will insert image here once I figure out how)
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Dynamic leaderboards that update regularly
+- 'rooms' that players can open, join, and close
+- Costomizable profiles
+- Points Tracker within games
+- Scripture library to pull from for games
+- Some way to track time
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
+- **HTML** - Probably 3 or 4 pages, login, gameplay, gomepage, and probably settings. Hyperlinks embedded in artifacts will connect the pages
+- **CSS** - Styling choices, including the display that slowly reveals the scripture to the player
+- **React** - Something that will analyze the player inputs to see if it is correct,, displays chats within games, allows player to connect to games with each other
 - **Service** - Description here
 - **DB/Login** - Description here
 - **WebSocket** - Description here
