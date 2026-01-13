@@ -27,7 +27,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 Imagine the game geo-guesser, but for missionaries. Something fun to help them practice quickly finding the scriptures that come to mind. I want to create a game that will be competative, but fun, having people compete online with each other to quickly identify what scripture is being referenced, accumulating points, and climbing the leaderboards. How fast can they find the scripture and submint their answer?
 ### Design
 
-![Design image] (I will insert image here once I figure out how)
+![Design image](WhatsApp Image 2026-01-12 at 10.38.24 PM.png)
 
 ### Key features
 
