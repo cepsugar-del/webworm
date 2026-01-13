@@ -1,9 +1,8 @@
-# Your startup name here
+# Scripture Guesser
 
 [My Notes](notes.md)
-
-A brief description of the application here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
+*Really random idea, subjet to change*
+My plan for this application is to create a game where people can compete against each other in a head-to head match to figure out what scripture is being referenced. I think I will do it where the scripture is revealed 1 word at a time in small time increments to allow the people playing to guess the word. I also think that players will accumulate points based on words remaining in the scripture. For example, if the scripture is Genisis 1:1 "In the beginning God created the heaven and the earth" a person who guessded on "In the beginning" would gain 7 points. There will be short matches between active players (or bots if I get to that point) and leaderboards showing who has won the most matches that day/week/month.
 > [!NOTE]
 > This is a template for your startup application. You must modify this `README.md` file for each phase of your development. You only need to fill in the section for each deliverable when that deliverable is submitted in Canvas. Without completing the section for a deliverable, the TA will not know what to look for when grading your submission. Feel free to add additional information to each deliverable description, but make sure you at least have the list of rubric items and a description of what you did for each item.
 
