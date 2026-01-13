@@ -45,9 +45,9 @@ I am going to use the required technologies in the following ways.
 - **HTML** - Probably 3 or 4 pages, login, gameplay, gomepage, and probably settings. Hyperlinks embedded in artifacts will connect the pages
 - **CSS** - Styling choices, including the display that slowly reveals the scripture to the player
 - **React** - Something that will analyze the player inputs to see if it is correct,, displays chats within games, allows player to connect to games with each other
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **Service** - Login, library of scriptures to use
+- **DB/Login** - Tracks leaderboard from the past and stores it for later
+- **WebSocket** - In game chats, display the leaderboard, connect with other players in games
 
 ## 🚀 AWS deliverable
 
