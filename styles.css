@@ -2,6 +2,7 @@
 body{
     font-family: "Playfair Display", serif;
     color:black;
+    background: lightgray;
 }
 h1{
     text-align:center;
@@ -13,28 +14,30 @@ a {
     font-family: "Playwrite IN Guides", cursive;
     animation-name: slow_reveal; /*will slowly reveal the words, represented by the slow fade in*/
     animation-duration: 10s;}
-/*@keyframes slow_reveal{
+@keyframes slow_reveal{
     from{opacity:0;}
     to{opacity:1}
-}*/
+}
 #game_box{
     display: flex;
     float: left;
-    width: 50vw;
-    height: 50vh;
+    width: 45vw;
+    height: 75vh;
     border:black solid;
     background: lightgrey;
     text-anchor: middle;
 }
-table{
+.t{
     display:flex;
-    flex-direction: column;
-    width: 50vw;
-    float: left;
-    margin: 5vw;
-    text-align: center;
+    flex-direction: row;
+    width: 45vw;
 }
 .in_game{
+    padding: 5px;
     float:right;
-    width: 50vw;
+    width: 45vw;
+}
+.centered{
+    text-align: center;
+    text-emphasis: bold;
 }

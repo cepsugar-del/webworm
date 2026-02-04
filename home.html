@@ -8,11 +8,10 @@
     <title>Sample Page</title>
 </head>
 <body>
-    <h1>Home Page</h1>
-    <h2>Welcome {player}</h2>
-    <table>
+    <h1>Welcome {player}</h1>
+    <table class = "caption-top table table-danger table-striped-columns">
         <!--Constantly pull data and update the leaderboard (database/webSocket)-->
-        <caption>Leaderboard</caption>
+        <caption class = centered><b>Leaderboard</b></caption>
         <tr>
             <th>Name</th>
             <th>Games</th>
@@ -38,8 +37,8 @@
             <td>Average Points</td>
         </tr>
     </table>
-    <p><a href = "game.html">Big Giant Play Button</a></p>
-    <p><a href = "index.html">Logout</a></p>
-    <a href = "https://github.com/cepsugar-del/webworm/blob/main/index.html">My GitHub</a>
+    <p><a href = "game.html" class = "btn btn-success">Big Giant Play Button</a></p>
+    <p><a href = "index.html" class = "btn btn-primary">Logout</a></p>
+    <a class = "btn btn-info" href = "https://github.com/cepsugar-del/webworm/blob/main/index.html">My GitHub</a>
 </body>
 </html>
