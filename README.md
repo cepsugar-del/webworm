@@ -63,11 +63,11 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Proper HTML element usage** - To the best of my knowledge I have used appropriate tags
 - [x] **Links** - I think I have the pages linked appropriately
 - [x] **Text** - There are some text elements.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **3rd party API placeholder** - I will pull scriptures from a 3rd part site
+- [x] **Images** - I added 1 image to prove I can do it. I will add more as I deem necessary in the css section
+- [x] **Login placeholder** - see index.html
+- [x] **DB data placeholder** - Leaderboards
+- [x] **WebSocket placeholder** - leaderboards/in game chat
 
 ## 🚀 CSS deliverable
 
