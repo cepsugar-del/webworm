@@ -46,6 +46,6 @@ a {
 .sign_in{
     width: 15em;
 }
-.big{
-    font-size: 1.5em;
+#big{
+    margin-top: 6dvh;
 }
