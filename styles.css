@@ -49,3 +49,11 @@ a {
 #big{
     margin-top: 6dvh;
 }
+.smaller{
+    display:flex;
+    margin-left: 20vw;
+    margin-right: 20vw;
+    float:right;
+    width: 10vw;
+    text-align:center;
+}
