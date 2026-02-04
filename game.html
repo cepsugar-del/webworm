@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel = 'stylesheet'href = './styles.css'>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sample Page</title>
@@ -8,23 +10,23 @@
 <body>
     <h1>Scripture Quest</h1>
     <!-- import random scriptures from any open source KJV bible, or from the Book of Mormon (3rd party API)-->
-    <p>If any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him.</p>
-    <h3>You have successfully Identified the Scripture</h3>
+    <p id="game_box"><span class = "hidden">If any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him.</span></p>
+    <h3 class = "in_game">You have successfully Identified the Scripture</h3>
+    <!-- If I'm feeling ambitious, this will also include other players' guesses-->
+    <h4 class = "in_game">Your guesses</h4>
+    <ul calsee = "in_game">
+        <li>James 1:5</li>
+    </ul>
     <form method = 'get'>
         <input type = text placeholder = "Enter Guess...">
     </form>
-    <!-- If I'm feeling ambitious, this will also include other players' guesses-->
-    <h4>Your guesses</h4>
-    <ul>
-        <li>James 1:5</li>
-    </ul>
-    <h4>
+    <h4 class = "in_game">
         Your Points: <span class = points_disp>10</span>
     </h4>
-    <h4>Your Ranking: <span class = rank>1/1</span></h4>
-    <p><a href = "https://home.hcripturequesst.click">Exit game</a></p>
-    <a href = "https://github.com/cepsugar-del/webworm/blob/main/index.html">My GitHub</a>
-    <p>I may have bitten off more than I can chew<img src = 'https://www.clipartmax.com/png/middle/244-2440674_nervous-sweating-emoji-for-kids-smile-with-sweat-emoji.png' width = 10px></p>
+    <h4 class = "in game">Your Ranking: <span class = rank>1/1</span></h4>
+    <p class = "in_game"><a href = "home.html">Exit game</a></p>
+    <a class = "in_game" href = "https://github.com/cepsugar-del/webworm/blob/main/index.html">My GitHub</a>
+    <p class = "in_game">I may have bitten off more than I can chew<img src = 'https://www.clipartmax.com/png/middle/244-2440674_nervous-sweating-emoji-for-kids-smile-with-sweat-emoji.png' width = 10px></p>
     
 </body>
 </html>
