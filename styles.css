@@ -29,8 +29,9 @@ a {
 }
 .t{
     display:flex;
-    flex-direction: row;
-    width: 45vw;
+    flex-direction: column;
+    width: 50vw;
+    float: right;
 }
 .in_game{
     padding: 5px;
@@ -39,5 +40,12 @@ a {
 }
 .centered{
     text-align: center;
-    text-emphasis: bold;
+    color: black;
+    font-size:1.5em;
+}
+.sign_in{
+    width: 15em;
+}
+.big{
+    font-size: 1.5em;
 }
