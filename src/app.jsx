@@ -3,22 +3,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
-import { Play } from './game/game';
+import { Game } from './game/game';
 import { Home } from './home/home';
+function NotFound() {
+  return <main className="container-fluid bg-secondary text-center">404: Return to sender. Address unknown.</main>;
+}
 export default function App() {
   return (
-    <body>
-    <h1>Login</h1>
-    <form method = 'get'>
-        <span>Username</span>
-    <input className = "form-control sign_in" type = 'text' placeholder="username"></input></form>
-    <form method = 'get'>
-    <span>Password</span>
-    <input className = "form-control sign_in" type = 'text' placeholder="-------"></input></form>
-    <p></p>
-    <NavLink className = "btn btn-primary" to = 'home'>Successful Login will lead here</NavLink>
-    <p></p>
-    <a className = "btn btn-info" href = "https://github.com/cepsugar-del/webworm/blob/main/index.html">My GitHub</a>
-    </body>
-  );
+    <BrowserRouter>
+    <div>
+  <Routes>
+  <Route path='/' element={<Login />} exact />
+   <Route path='/login' element={<Login />} />
+  <Route path='/game' element={<Game />} />
+  <Route path='/home' element={<Home />} />
+  <Route path='*' element={<NotFound />} />
+</Routes>
+</div>
+    </BrowserRouter>);
 }

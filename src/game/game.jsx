@@ -1,5 +1,8 @@
 import React from 'react';
 import "../app.css";
+import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { Login } from '../login/login';
+import { Home } from '../home/home';
 export function Game(){
     return(
         <div>
@@ -17,7 +20,7 @@ export function Game(){
         Your Points: <span className = "points_disp">10</span>
     </h4>
     <h4 className = "in_game">Your Ranking: <span className = "rank">1/1</span></h4>
-    <p className = "btn btn-warning smaller"><NavLink to = "home">Exit game</NavLink></p>
+    <p className = "btn btn-warning smaller"><NavLink to = "/home">Exit game</NavLink></p>
     <p><a className = "btn btn-info smaller" href = "https://github.com/cepsugar-del/webworm.git">My GitHub</a></p>
     <p className = "in_game">I may have bitten off more than I can chew <img src = 'https://www.clipartmax.com/png/middle/244-2440674_nervous-sweating-emoji-for-kids-smile-with-sweat-emoji.png' width = "10px" ></img></p>
     </div>

@@ -1,11 +1,13 @@
 import React from 'react';
-
+import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { Login } from '../login/login';
+import { Game } from '../game/game';
 export function Home() {
     return(
-        <div>
-        <h1>Welcome {player}</h1>
-    <table class = "t caption-top table table-danger table-striped-columns">
-        <caption class = "centered"><b>Leaderboard</b></caption>
+        <main>
+        <h1>Welcome User</h1>
+    <table className = "t caption-top table table-danger table-striped-columns">
+        <caption className = "centered"><b>Leaderboard</b></caption>
         <tr>
             <th>Name</th>
             <th>Games</th>
@@ -31,10 +33,10 @@ export function Home() {
             <td>Average Points</td>
         </tr>
     </table>
-    <NavLink to = "game" id = "big" class = "btn btn-success">Big Giant Play Button</NavLink>
+    <NavLink to = "/game" id = "big" className = "btn btn-success">Big Giant Play Button</NavLink>
     <p></p>
-    <NavLink to = "login" class = "btn btn-primary">Logout</NavLink>
+    <NavLink to = "/login" className = "btn btn-primary">Logout</NavLink>
     <p></p>
-    <a class = "btn btn-info" href = "https://github.com/cepsugar-del/webworm/blob/main/index.html">My GitHub</a>
-    </div>);
+    <a className = "btn btn-info" href = "https://github.com/cepsugar-del/webworm/blob/main/index.html">My GitHub</a>
+    </main>);
 }
