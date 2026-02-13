@@ -84,9 +84,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [ ] **Components** - I did not complete this part of the deliverable.
-- [ ] **Router** - I did not complete this part of the deliverable.
+- [x] **Bundled using Vite** - I had to talk to the CS 324 TA's because of my absolutely wacky setup that I will get fixed because its becoming a problem
+- [x] **Components** - I think I've done this. IDK, the think works, and now it looks more like a webpage setup
+- [x] **Router** - All of my pages successfully transition between them. It took me way too long to figure out that I needed to add a '/' to tell it to not append the thing
 
 ## 🚀 React part 2: Reactivity deliverable
 
