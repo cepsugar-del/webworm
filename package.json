@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "[My Notes](notes.md)\r *Really random idea, subjet to change this may be more than I am capable of*\r My plan for this application is to create a game where people can compete against each other in a head-to head match to figure out what scripture is being referenced. I think I will do it where the scripture is revealed 1 word at a time in small time increments to allow the people playing to guess the word. I also think that players will accumulate points based on words remaining in the scripture. For example, if the scripture is Genisis 1:1 \"In the beginning God created the heaven and the earth\" a person who guessded on \"In the beginning\" would gain 7 points. There will be short matches between active players (or bots if I get to that point) and leaderboards showing who has won the most matches that day/week/month.\r > [!NOTE]\r > This is a template for your startup application. You must modify this `README.md` file for each phase of your development. You only need to fill in the section for each deliverable when that deliverable is submitted in Canvas. Without completing the section for a deliverable, the TA will not know what to look for when grading your submission. Feel free to add additional information to each deliverable description, but make sure you at least have the list of rubric items and a description of what you did for each item.",
   "main": "index.js",
-    "scripts": {
+  "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
@@ -22,5 +22,10 @@
   "homepage": "https://github.com/cepsugar-del/webworm#readme",
   "devDependencies": {
     "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-router-dom": "^7.13.0"
   }
 }
