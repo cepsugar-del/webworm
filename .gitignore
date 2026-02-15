@@ -2,11 +2,4 @@ node_modules
 .vscode/
 .DS_store
 package-lock.json
-package-lock.json
 package.json
-node_modules/.package-lock.json
-public
-node_modules/.bin/esbuild
-node_modules/.bin/nanoid
-node_modules/.bin/nanoid
-node_modules/.bin/vite
