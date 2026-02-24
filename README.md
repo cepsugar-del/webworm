@@ -92,6 +92,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
+Notes - JSX is a lot more function based than programming I'm used to. In order to call any sort of interactivity or code within the HTML, a function is required. This is going to require me to partition my code more than I am used to. Looks fun!
 - [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
 - [ ] **Hooks** - I did not complete this part of the deliverable.
 
