@@ -2,20 +2,25 @@ import React from 'react'
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Game } from '../game/game';
 import { Home } from '../home/home';
+import { Unauthenticated } from './unauthenticated';
+import { Authenticated } from './authenticated';
+import { AuthStatus } from './authState';
 export function Login(){
-    return (
+    return(
         <div>
-            <h1>Login</h1>
-    <form method = 'get'>
-        <span>Username</span>
-    <input className = "form-control sign_in" type = 'text' placeholder="username"></input></form>
-    <form method = 'get'>
-    <span>Password</span>
-    <input className = "form-control sign_in" type = 'text' placeholder="-------"></input></form>
-    <p></p>
-    <NavLink className = "btn btn-primary" to = '/home'>Successful Login will lead here</NavLink>
-    <p></p>
-    <a className = "btn btn-info" href = "https://github.com/cepsugar-del/webworm/blob/main/index.html">My GitHub</a>
+            {authState !== AuthStatus.Uknown && <h1>Welsom to Scripture Quesst</h1>}
+            {authState === AuthStatus.Authenticated && (
+                <Authenticated userName = {username} onLogout={() => onAuthChange(userName, AuthStatus.Unauthenticated)}/>
+            )}
+            {authState === AuthStatus.Unauthenticed && (
+                <Unauthenticated
+                    userName={userName}
+                    onLogin={(loginUserName,AuthStatus.Authenticated)
+
+                    )}
+            )}
         </div>
-    );
+    )
 }
+
+//I copied almost all of the functionality for this page over from the simon react. 

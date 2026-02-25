@@ -1,0 +1,10 @@
+export class AuthStatus {
+    static Unknown = new AuthStatus('unknown');
+    static Authenticated = new AuthStatus('authenticated');
+    static Unauthenticated = new AuthStatus('unauthenticated');
+
+    constructor(n) {
+        this.name = n;
+    }
+}
+
