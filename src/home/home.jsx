@@ -3,6 +3,31 @@ import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from '../login/login';
 import { Game } from '../game/game';
 export function Home() {
+    const [scores, setScores] = React.useState([]);
+    React.useEffect(() =>{
+        const scoresText = localStorage.getItem('scores');
+        if (scoresText) {
+            setScores(JSON.parse(scoresText));
+        }
+    },[]);
+    const leaderboard = [];
+    if (scores.length) {
+        for(const [i, score] of scores.entries()){
+            leaderboard.push(
+                <tr key = {i}>
+                    <td>score.name</td>
+                    <td>score.score</td>
+                    <td>score.date</td>
+                </tr>
+            );
+        }
+    }else{
+        scoreRows.push(
+            <tr key ='0'>
+                <td>No winners yet...</td>
+            </tr>
+        );
+    }
     return(
         <main>
         <h1>Welcome User</h1>
@@ -14,24 +39,9 @@ export function Home() {
             <th>Total</th>
             <th>Average</th>
         </tr>
-        <tr>
-            <td>Player 1</td>
-            <td>Games Played</td>
-            <td>Total Points</td>
-            <td>Average Points</td>
-        </tr>
-        <tr>
-            <td>Player 2</td>
-            <td>Games Played</td>
-            <td>Total Points</td>
-            <td>Average Points</td>
-        </tr>
-        <tr>
-            <td>Player 3</td>
-            <td>Games Played</td>
-            <td>Total Points</td>
-            <td>Average Points</td>
-        </tr>
+        <tbody id = 'scores'>
+            {leaderboard}
+        </tbody>
     </table>
     <NavLink to = "/game" id = "big" className = "btn btn-success">Big Giant Play Button</NavLink>
     <p></p>
