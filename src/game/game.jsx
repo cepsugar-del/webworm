@@ -4,6 +4,12 @@ import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from '../login/login';
 import { Home } from '../home/home';
 export function Game(){
+    const [] = React.useState([]);
+    React.useEffect(() =>{
+        possibilities = readAsText('scriptures.txt').split("\n");
+        scripture = possibilities[Math.floor(Math.random()*possibilities.length)].split(" ");
+
+    });
     return(
         <div>
     <h1>Scripture Quest</h1>

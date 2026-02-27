@@ -3,8 +3,8 @@ export class AuthStatus {
     static Authenticated = new AuthStatus('authenticated');
     static Unauthenticated = new AuthStatus('unauthenticated');
 
-    constructor(n) {
-        this.name = n;
+    constructor(name) {
+        this.name = name;
     }
 }
 

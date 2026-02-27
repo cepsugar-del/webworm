@@ -5,19 +5,24 @@ import { Home } from '../home/home';
 import { Unauthenticated } from './unauthenticated';
 import { Authenticated } from './authenticated';
 import { AuthStatus } from './authState';
-export function Login(){
+export function Login({userName, authStatus, onAuthChange}){
     return(
+        <main>
         <div>
-            {authState !== AuthStatus.Uknown && <h1>Welsom to Scripture Quesst</h1>}
-            {authState === AuthStatus.Authenticated && (
-                <Authenticated userName = {username} onLogout={() => onAuthChange(userName, AuthStatus.Unauthenticated)}/>
+            {authStatus !== AuthStatus.Unknown && <h1>Welcome to Scripture Quesst</h1>}
+            {authStatus === AuthStatus.Authenticated && (
+                <Authenticated userName = {userName} onLogout={() => onAuthChange(userName, AuthStatus.Unauthenticated)}/>
             )}
-            {authState === AuthStatus.Unauthenticed && (
+            {authStatus === AuthStatus.Unauthenticated && (
                 <Unauthenticated
                     userName={userName}
-                    onLogin={() => onAuthChange(loginUserName,AuthStatus.Authenticated)}></Unauthenticated>
-            )};
+                    onLogin={(loginUserName) =>{
+                    onAuthChange(loginUserName,AuthStatus.Authenticated);
+                }}/>
+            )}
+            <p><a className = "btn btn-info smaller" href = "https://github.com/cepsugar-del/webworm.git">My GitHub</a></p>
         </div>
+        </main>
     )
 }
 
