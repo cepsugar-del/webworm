@@ -11,6 +11,7 @@ export function Game(person){
     const [guesses,setGuesses] = React.useState([]);
     const [ans,setAns] = React.useState("");
     const [done,setDone] = React.useState(false);
+    const [pnts,setpnts] = React.useState("");
     React.useEffect(() =>{
         setAns("James 1:5");
         setScrip("James 1:5\nIf any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him.\nJoseph Smith History 1:16 \nBut, exerting all my powers to call upon God to deliver me out of the power of this enemy which had seized upon me, and at the very moment when I was ready to sink into despair and abandon myself to destruction—not to an imaginary ruin, but to the power of some actual being from the unseen world, who had such marvelous power as I had never before felt in any being—just at this moment of great alarm, I saw a pillar of light exactly over my head, above the brightness of the sun, which descended gradually until it fell upon me.".split("\n")[1].split(" "));
@@ -30,10 +31,7 @@ export function Game(person){
             },2000);
         return () => clearInterval(interval);
     },[scripture]);
-    async function saveScore(score){
-        const date = new Date().toLocaleDateString();
-        const newScore = {name: userName, score: score, date: date};
-    }
+    
     function updateScoresLocal(newScore) {
     let scores = [];
     const scoresText = localStorage.getItem('scores');
@@ -60,12 +58,19 @@ export function Game(person){
 
     localStorage.setItem('scores', JSON.stringify(scores));
     }
+    async function saveScore(score){
+        const date = new Date().toLocaleDateString();
+        const newScore = {name: userName, score: score, date: date};
+        updateScoresLocal(newScore);
+    }
     async function guess(str) {
         document.getElementById("guesser").reset();
         setGuesses(prev => [...prev, str]);   
         if(str === ans){
             saveScore(scripture.length);
             setDone(true);
+            setpnts("Your Points: " + scripture.length + "\n Your Opponant's points: " + 15);
+            //when I can get input from other players, this will show the actual score of another human
         }
     }
 
@@ -84,7 +89,7 @@ export function Game(person){
         <input type = "text" placeholder = "Enter Guess..." ></input>
     </form>
     <h4 className = "in_game">
-        Your Points: <span className = "points_disp">10</span>
+        {pnts}
     </h4>
     <p className = "btn btn-warning smaller"><NavLink to = "/home">Exit game</NavLink></p>
     <p><a className = "btn btn-info smaller" href = "https://github.com/cepsugar-del/webworm.git">My GitHub</a></p>

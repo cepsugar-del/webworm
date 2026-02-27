@@ -33,11 +33,11 @@ export function Home() {
         <h1>Welcome User</h1>
     <table className = "t caption-top table table-danger table-striped-columns">
         <caption className = "centered"><b>Leaderboard</b></caption>
-        <tr>
+        <thead>
             <th>Name</th>
             <th>Points</th>
             <th>Date</th>
-        </tr>
+        </thead>
         <tbody id = 'scores'>
             {leaderboard}
         </tbody>
