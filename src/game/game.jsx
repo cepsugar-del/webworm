@@ -5,12 +5,27 @@ import { Login } from '../login/login';
 import { Home } from '../home/home';
 export function Game(){
     const[possibilities, setPosb] = React.useState([]);
-    const[scripture, setScrip] = React.useState('');
+    const[scripture, setScrip] = React.useState([]);
+    const[revealed,reveal] = React.useState("")
     const [guesses,setGuesses] = React.useState([]);
     React.useEffect(() =>{
         const ans = "James 1:5";
         setScrip("James 1:5\nIf any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him.\nJoseph Smith History 1:16 \nBut, exerting all my powers to call upon God to deliver me out of the power of this enemy which had seized upon me, and at the very moment when I was ready to sink into despair and abandon myself to destruction—not to an imaginary ruin, but to the power of some actual being from the unseen world, who had such marvelous power as I had never before felt in any being—just at this moment of great alarm, I saw a pillar of light exactly over my head, above the brightness of the sun, which descended gradually until it fell upon me.".split("\n")[1].split(" "));
+
     },[]);
+    React.useEffect(() =>{
+        if (scripture.length ===0) return;
+        const interval = setInterval(() => {
+            setScrip(previous =>{
+                if(previous.length ===0) return previous;
+                const next = [previous];
+                const word = next.pop();
+                reveal(r => word + " " + r);
+           return next;
+            });
+            2000});
+        return () => clearInterval(interval);
+    },[scripture]);
     async function saveScore(score){
         const date = new Date().toLocaleDateString();
         const newScore = {name: userName, score: score, date: date};
@@ -45,10 +60,11 @@ export function Game(){
         document.getElementById("guesser").reset();
         setGuesses(prev => [...prev, str]);   
     }
+
     return(
         <div>
     <h1>Scripture Quest</h1>
-    <p id="game_box"><span className = "hidden">If any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him.</span></p>
+    <p id="game_box"><span className = "hidden">{revealed}</span></p>
     <h3 className = "in_game">You have successfully Identified the Scripture</h3>
     <h4 className = "in_game">Your guesses</h4>
     <ul className = "in_game">
