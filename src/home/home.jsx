@@ -35,9 +35,8 @@ export function Home() {
         <caption className = "centered"><b>Leaderboard</b></caption>
         <tr>
             <th>Name</th>
-            <th>Games</th>
-            <th>Total</th>
-            <th>Average</th>
+            <th>Points</th>
+            <th>Date</th>
         </tr>
         <tbody id = 'scores'>
             {leaderboard}
