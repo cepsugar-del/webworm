@@ -14,31 +14,6 @@ function App() {
   return (
     <BrowserRouter>
       <div>
-        <header>
-          <nav>
-          <menu>
-            <li className = 'nav-item'>
-              <NavLink className = 'nav-link' to = ''>
-                Login
-              </NavLink>
-            </li>
-            {authState === AuthState.Authenticated &&(
-              <li className = 'nav-item'>
-                <NavLink className = 'nav-link' to = 'game'>
-                  Play
-                </NavLink>
-              </li>
-            )}
-            {authState === AuthState.Authenticated &&(
-              <li className = 'nav-item'>
-                <NavLink className = 'nav-link' to = 'home'>
-                  Scores
-                </NavLink>
-              </li>
-            )}
-          </menu>
-          </nav>
-        </header>
         <Routes>
           <Route 
             path='/' 

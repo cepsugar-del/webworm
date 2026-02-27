@@ -15,14 +15,14 @@ export function Home() {
         for(const [i, score] of scores.entries()){
             leaderboard.push(
                 <tr key = {i}>
-                    <td>score.name</td>
-                    <td>score.score</td>
-                    <td>score.date</td>
+                    <td>{score.name}</td>
+                    <td>{score.score}</td>
+                    <td>{score.date}</td>
                 </tr>
             );
         }
     }else{
-        scoreRows.push(
+        leaderboard.push(
             <tr key ='0'>
                 <td>No winners yet...</td>
             </tr>

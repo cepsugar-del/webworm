@@ -18,8 +18,8 @@ export function Authenticated(person){
 
     return (
         <div>
-            <div className = "body">{person.userName}</div>
-            <Button variant = 'primary' onClick={() => navigate('/game')}>
+            <h2>{person.userName}</h2>
+            <Button variant = 'primary' onClick={() => navigate('/home')}>
                 Play
             </Button>
             <Button variant = 'secondary' onClick={() => logout()}>
