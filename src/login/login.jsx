@@ -1,29 +1,26 @@
 import React from 'react'
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
-import { Game } from '../game/game';
-import { Home } from '../home/home';
 import { Unauthenticated } from './unauthenticated';
 import { Authenticated } from './authenticated';
-import { AuthStatus } from './authState';
-export function Login({userName, authStatus, onAuthChange}){
+import { AuthState } from './authState';
+export function Login({userName, authState, onAuthChange}){
     return(
-        <main>
-        <div>
-            {authStatus !== AuthStatus.Unknown && <h1>Welcome to Scripture Quesst</h1>}
-            {authStatus === AuthStatus.Authenticated && (
-                <Authenticated userName = {userName} onLogout={() => onAuthChange(userName, AuthStatus.Unauthenticated)}/>
-            )}
-            {authStatus === AuthStatus.Unauthenticated && (
-                <Unauthenticated
-                    userName={userName}
-                    onLogin={(loginUserName) =>{
-                    onAuthChange(loginUserName,AuthStatus.Authenticated);
-                }}/>
-            )}
-            <p><a className = "btn btn-info smaller" href = "https://github.com/cepsugar-del/webworm.git">My GitHub</a></p>
-        </div>
+        <main className='container-fluid bg-secondary text-center'>
+            <div>
+                {authState !== AuthState.Unknown && <h1>Welcome to Scripture Quesst</h1>}
+                {authState === AuthState.Authenticated && (
+                    <Authenticated userName = {userName} onLogout={() => onAuthChange(userName, AuthState.Unauthenticated)}/>
+                )}
+                {authState === AuthState.Unauthenticated && (
+                    <Unauthenticated
+                        userName={userName}
+                        onLogin={(loginUserName) =>{
+                            onAuthChange(loginUserName, AuthState.Authenticated);
+                        }}
+                    />
+                )}
+            </div>
         </main>
-    )
+    );
 }
 
-//I copied almost all of the functionality for this page over from the simon react. 
+//I copied almost all of the functionality for this page over from the simon react.

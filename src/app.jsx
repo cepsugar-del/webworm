@@ -5,13 +5,13 @@ import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
 import { Game } from './game/game';
 import { Home } from './home/home';
-import { AuthStatus } from './login/authState';
+import { AuthState } from './login/authState';
 function NotFound() {
   return <main className="container-fluid bg-secondary text-center">404: Return to sender. Address unknown.</main>;
 }
 export default function App() {
   const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
-  const currentAuthState = userName ? AuthStatus.Authenticated : AuthStatus.Unauthenticated;
+  const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
   const [authState, setAuthState] = React.useState(currentAuthState);
   return (
     <BrowserRouter>
@@ -22,7 +22,7 @@ export default function App() {
     element={
       <Login 
         userName={userName} 
-        authStatus={authState} 
+        authState={authState} 
         onAuthChange={(userName,authState) => {
           setAuthState(authState);
           setUserName(userName);
@@ -36,7 +36,7 @@ export default function App() {
     element={
       <Login 
         userName={userName} 
-        authStatus={authState} 
+        authState={authState} 
         onAuthChange={(userName,authState) => {
           setAuthState(authState);
           setUserName(userName);

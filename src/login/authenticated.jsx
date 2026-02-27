@@ -19,7 +19,7 @@ export function Authenticated(person){
     return (
         <div>
             <div className = "body">{person.userName}</div>
-            <Button variant = 'primary' onClick={() => navigate('/play')}>
+            <Button variant = 'primary' onClick={() => navigate('/game')}>
                 Play
             </Button>
             <Button variant = 'secondary' onClick={() => logout()}>
