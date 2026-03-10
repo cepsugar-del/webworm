@@ -78,3 +78,40 @@ app.use(function (err,req,res,next) {
 app.use((requ, res) => {
     res.sendFile('index.html', {root: 'public'});
 });
+
+function updateScores(newScore){
+    let found = false;
+    for (const [i, prevScore] of scores.entries()){
+        if(newScore.score > prevScore.score){
+            scores.splice(i,0,newScore.score);
+            found = true;
+            break;
+        }
+    }
+    if (!found){
+        scores.push(newScore);
+    }
+    if(scores.length >10){
+        scores.length = 10;
+    }
+    return scores;
+}
+
+async function createUser(email,password){
+    const passwordHash = await bcrypt.hash(password, 10);
+
+    const user = {
+        email: email, password: passwordHash, token: uuid.v4(),};
+    
+    users.push(user);
+    return user;
+}
+
+async function findUser(field, value) {
+    if (!value) return null;
+    return users.find((u) => u[field === value]);
+}
+
+function setAuthCookie(res, authToken) {
+    res.cookie(authCoodieName, authToken,{ secure: true, httpOnly: true, sameSite: 'strict',});
+};
