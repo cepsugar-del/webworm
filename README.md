@@ -101,12 +101,12 @@ Note2 - I rescind my previous statment. This is not as fun as I thought (probabl
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Supports registration, login, logout, and restricted endpoint** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - followed simon format
+- [x] **Static middleware for frontend** - followed simon format
+- [x] **Calls to third party endpoints** - bible-api to get my random verses for the game
+- [x] **Backend service endpoints** - followed simon format
+- [ ] **Frontend calls service endpoints** - still needs debugging
+- [ ] **Supports registration, login, logout, and restricted endpoint** - is currently the problem
 
 ## 🚀 DB deliverable
 
