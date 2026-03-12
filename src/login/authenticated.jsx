@@ -14,7 +14,7 @@ export function Authenticated(person){
             method: 'delete',
         })
             .catch(() => {
-                //do nothing, there's been a problem
+                setDisplayError("How did you manage this?");
             })
             .finally(() => {
                 localStorage.removeItem('userName');

@@ -20,6 +20,7 @@ export function Unauthenticated (person){
         });
         if (response?.status === 200){
             localStorage.setItem('userName',userName);
+            person.onLogin(userName);
         }else {
             const body = await response.json();
             setDisplayError(`Warning: ${body.msg}`);
