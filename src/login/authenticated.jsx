@@ -10,10 +10,16 @@ export function Authenticated(person){
     const navigate = useNavigate();
 
     function logout(){
-        //get rid of the current signed in person
-        localStorage.removeItem('userName');
-        //perform the logout function
-        person.onLogout();
+        fetch('/api/auth/logout', {
+            method: 'delete',
+        })
+            .catch(() => {
+                //do nothing, there's been a problem
+            })
+            .finally(() => {
+                localStorage.removeItem('userName');
+                person.onLogout();
+            })
     }
 
     return (
