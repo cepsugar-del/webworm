@@ -8,9 +8,15 @@ export function Unauthenticated (person){
     const [password, setPassword] = React.useState('');
     const [displayError, setDisplayError] = React.useState(null);
 
+    async function loginUser() {
+        loginOrCreate(`/api/auth/login`);
+    }
+    async function createUser() {
+        loginOrCreate(`/api/auth/create`);
+    }
     async function loginOrCreate(endpoint) {
         const response = await fetch(endpoint, {
-            method: 'post',
+            method: 'POST',
             body: JSON.stringify({
                 email: userName, 
                 password: password}),
@@ -38,10 +44,10 @@ export function Unauthenticated (person){
                     <span className = 'input-group-text'>P:</span>
                     <input className = 'form-control' type = 'password' onChange={(e) => setPassword(e.target.value)} placeholder = 'password' />
                 </div>
-            <Button variant = 'primary' onClick={() => loginOrCreate()} disabled = {!userName || !password}>
+            <Button variant = 'primary' onClick={() => loginUser()} disabled = {!userName || !password}>
                 Login
             </Button>
-            <Button variants = 'secondary' onClick = {() => loginOrCreate()} disabled = {!userName || !password}>
+            <Button variant = 'secondary' onClick = {() => createUser()} disabled = {!userName || !password}>
                 Create
             </Button>
             </div>

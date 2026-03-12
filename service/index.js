@@ -3,22 +3,25 @@ const app = express();
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const uuid = require('uuid');
-
+const authCookieName = 'token';
 const port = process.argv.length > 2 ? process.argv[2]:4000;
+app.use(express.json());
+app.use(cookieParser());
 app.use(express.static('public'));
-app.listen(port);
+app.listen(port, () => {
+    console.log(`listening on port ${port}`);
+});
 let users = [];
 let scores = [];
 
-let apiRouter = express.Router();
-app.use('/api',apiRouter);
-
+var apiRouter = express.Router();
+app.use(`/api`,apiRouter);
 //Creaet a user
-apiRouter.post('/auth/create', async(requestAnimationFrame, res) => {
-    if(await findUser('email', requestAnimationFrame.body.email)) {
+apiRouter.post('/auth/create', async(req, res) => {
+    if(await findUser('email', req.body.email)) {
         res.status(409).send({msg: 'Existing User'});
     }else {
-        const user = await createUser(requestAnimationFrame.body.email, requestAnimationFrame.body.password);
+        const user = await createUser(req.body.email, req.body.password);
         setAuthCookie(res, user.token);
         res.send({email: user.email});
     }
@@ -50,7 +53,7 @@ apiRouter.delete('/auth/logout',async (req,res)=>{
 
 //Make sure the user is allowed to be there
 const verifyAuth = async (req, res, next) =>{
-    const user = await findUser('token', requestAnimationFrame.cookies[authCookieName]);
+    const user = await findUser('token', req.cookies[authCookieName]);
     if(user){
         next();
     }else{
@@ -113,6 +116,5 @@ async function findUser(field, value) {
 }
 
 function setAuthCookie(res, authToken) {
-    authCookieName = 'token';
     res.cookie(authCookieName, authToken,{ secure: true, httpOnly: true, sameSite: 'strict',});
 };

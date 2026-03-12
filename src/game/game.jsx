@@ -13,7 +13,7 @@ export function Game(person){
     const [done,setDone] = React.useState(false);
     const [pnts,setpnts] = React.useState("");
     React.useEffect(() =>{
-        fetch('https://bible-api/data/kjv/random')
+        fetch('https://Bible-api/data/kjv/random')
             .then((response) => response.json())
             .then((data =>{
                 setAns(`${data.book} ${data.chapter}:${data.verse}`);
