@@ -31,7 +31,6 @@ export function Game(person){
             },2000);
         return () => clearInterval(interval);
     },[scripture]);
-    
     function updateScoresLocal(newScore) {
     let scores = [];
     const scoresText = localStorage.getItem('scores');
@@ -61,7 +60,11 @@ export function Game(person){
     async function saveScore(score){
         const date = new Date().toLocaleDateString();
         const newScore = {name: userName, score: score, date: date};
-        updateScoresLocal(newScore);
+        await fetch('/api/score',{
+            method: 'POST',
+            headers: {'content-type':'application/json'},
+            body: JSON.stringify(newScore),
+        });
     }
     async function guess(str) {
         document.getElementById("guesser").reset();

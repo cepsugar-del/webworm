@@ -4,11 +4,12 @@ import { Login } from '../login/login';
 import { Game } from '../game/game';
 export function Home() {
     const [scores, setScores] = React.useState([]);
-    React.useEffect(() =>{
-        const scoresText = localStorage.getItem('scores');
-        if (scoresText) {
-            setScores(JSON.parse(scoresText));
-        }
+    React.useEffect(() => {
+        fetch('/api/scores')
+            .then((respose)=>response.json())
+            .then((scores) =>{
+                setScores(scores);
+            })
     },[]);
     const leaderboard = [];
     if (scores.length) {
