@@ -4,8 +4,8 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const uuid = require('uuid');
 
-const port = process.argv.length > 2 ? process.argv[2]:3000;
-app.use(express.json());
+const port = process.argv.length > 2 ? process.argv[2]:4000;
+app.use(express.static('public'));
 app.listen(port);
 let users = [];
 let scores = [];
