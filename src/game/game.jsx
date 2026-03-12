@@ -13,9 +13,13 @@ export function Game(person){
     const [done,setDone] = React.useState(false);
     const [pnts,setpnts] = React.useState("");
     React.useEffect(() =>{
-        setAns("James 1:5");
-        setScrip("James 1:5\nIf any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him.\nJoseph Smith History 1:16 \nBut, exerting all my powers to call upon God to deliver me out of the power of this enemy which had seized upon me, and at the very moment when I was ready to sink into despair and abandon myself to destruction—not to an imaginary ruin, but to the power of some actual being from the unseen world, who had such marvelous power as I had never before felt in any being—just at this moment of great alarm, I saw a pillar of light exactly over my head, above the brightness of the sun, which descended gradually until it fell upon me.".split("\n")[1].split(" "));
-
+        fetch('https://bible-api/data/kjv/random')
+            .then((response) => response.json())
+            .then((data =>{
+                setAns(`${data.book} ${data.chapter}:${data.verse}`);
+                setScrip(data.text);
+            }))
+            .catch();
     },[]);
     React.useEffect(() =>{
         if (scripture.length ===0) return;
