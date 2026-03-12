@@ -13,12 +13,12 @@ export function Game(person){
     const [done,setDone] = React.useState(false);
     const [pnts,setpnts] = React.useState("");
     React.useEffect(() =>{
-        fetch('https://Bible-api/data/kjv/random')
+        fetch('https://Bible-api.com/data/kjv/random')
             .then((response) => response.json())
-            .then((data =>{
-                setAns(`${data.book} ${data.chapter}:${data.verse}`);
-                setScrip(data.text);
-            }))
+            .then((data) =>{
+                setAns(`${data.random_verse.book} ${data.random_verse.chapter}:${data.random_verse.verse}`);
+                setScrip(`${data.random_verse.text}`);
+            })
             .catch();
     },[]);
     React.useEffect(() =>{
@@ -72,7 +72,7 @@ export function Game(person){
     }
     async function guess(str) {
         document.getElementById("guesser").reset();
-        setGuesses(prev => [...prev, str]);   
+        setGuesses(prev => [...prev, str]);
         if(str === ans){
             saveScore(scripture.length);
             setDone(true);

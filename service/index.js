@@ -38,7 +38,7 @@ apiRouter.post('/auth/login', async(req,res) =>{
             return;
         }
     }
-    res.status(401).send({msg: 'Unauthroized'});
+    res.status(401).send({msg: 'Unauthorized'});
 });
 
 //Logout a user
@@ -62,7 +62,7 @@ const verifyAuth = async (req, res, next) =>{
 };
 
 //Get the scores
-apiRouter.get('/scores',verifyAuth, (req,res) => {
+apiRouter.get('/score',verifyAuth, (req,res) => {
     res.send(scores);
 });
 
