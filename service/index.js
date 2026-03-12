@@ -6,7 +6,7 @@ const uuid = require('uuid');
 
 const port = process.argv.length > 2 ? process.argv[2]:3000;
 app.use(express.json());
-
+app.listen(port);
 let users = [];
 let scores = [];
 
@@ -113,5 +113,6 @@ async function findUser(field, value) {
 }
 
 function setAuthCookie(res, authToken) {
-    res.cookie(authCoodieName, authToken,{ secure: true, httpOnly: true, sameSite: 'strict',});
+    authCookieName = 'token';
+    res.cookie(authCookieName, authToken,{ secure: true, httpOnly: true, sameSite: 'strict',});
 };
