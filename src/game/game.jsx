@@ -72,8 +72,6 @@ export function Game(person){
         });
     }
     async function guess(str) {
-        console.log(ans);
-        console.log(scripture);
         document.getElementById("guesser").reset();
         setGuesses(prev => [...prev, str]);
         if(str === ans){
