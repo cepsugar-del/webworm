@@ -18,19 +18,28 @@ var apiRouter = express.Router();
 app.use(`/api`,apiRouter);
 //Creaet a user
 apiRouter.post('/auth/create', async(req, res) => {
+    console.log("Making user");
     if(await findUser('email', req.body.email)) {
         res.status(409).send({msg: 'Existing User'});
     }else {
+        console.log("Ready");
         const user = await createUser(req.body.email, req.body.password);
+        console.log(`User: ${user}`);
         setAuthCookie(res, user.token);
+        console.log("cookies! " + user.token)
         res.send({email: user.email});
+        console.log("Pretty much done: "+user.email);
     }
+    console.log(`users: ${users}`);
 });
 
 //Login an exisiting user
 apiRouter.post('/auth/login', async(req,res) =>{
+    console.log("Logging in");
     const user = await findUser('email', req.body.email);
+    console.log(`Found user ${user}`);
     if(user){
+        console.log("That user exists");
         if (await bcrypt.compare(req.body.password, user.password)){
             user.token = uuid.v4();
             setAuthCookie(res, user.token);
@@ -39,6 +48,7 @@ apiRouter.post('/auth/login', async(req,res) =>{
         }
     }
     res.status(401).send({msg: 'Unauthorized'});
+    console.log("Log in atttempt complete");
 });
 
 //Logout a user
@@ -112,7 +122,14 @@ async function createUser(email,password){
 
 async function findUser(field, value) {
     if (!value) return null;
-    return users.find((u) => u[field === value]);
+    console.log(`Field: ${field}, Value: ${value}`);
+    for (const u in users){
+        console.log(users[u][field]);
+        if (users[u][field] === value){
+            return users[u];
+        }
+    }
+    return undefined;
 }
 
 function setAuthCookie(res, authToken) {

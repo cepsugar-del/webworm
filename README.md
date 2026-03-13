@@ -105,8 +105,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Static middleware for frontend** - followed simon format
 - [x] **Calls to third party endpoints** - bible-api to get my random verses for the game
 - [x] **Backend service endpoints** - followed simon format
-- [ ] **Frontend calls service endpoints** - still needs debugging
-- [ ] **Supports registration, login, logout, and restricted endpoint** - is currently the problem
+- [x] **Frontend calls service endpoints** - still needs debugging - done
+- [x] **Supports registration, login, logout, and restricted endpoint** - It works now
 
 ## 🚀 DB deliverable
 
