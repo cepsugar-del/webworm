@@ -5,8 +5,8 @@ import { Game } from '../game/game';
 export function Home() {
     const [scores, setScores] = React.useState([]);
     React.useEffect(() => {
-        fetch('/api/scores')
-            .then((respose)=>response.json())
+        fetch('/api/score')
+            .then((response)=>response.json())
             .then((scores) =>{
                 setScores(scores);
             })

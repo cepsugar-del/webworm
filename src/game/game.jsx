@@ -17,9 +17,10 @@ export function Game(person){
             .then((response) => response.json())
             .then((data) =>{
                 setAns(`${data.random_verse.book} ${data.random_verse.chapter}:${data.random_verse.verse}`);
-                setScrip(`${data.random_verse.text}`);
+                setScrip(data.random_verse.text);
             })
             .catch();
+        
     },[]);
     React.useEffect(() =>{
         if (scripture.length ===0) return;
@@ -32,7 +33,7 @@ export function Game(person){
                 reveal(r => word + " " + r);
            return next;
             });
-            },2000);
+            },200);
         return () => clearInterval(interval);
     },[scripture]);
     function updateScoresLocal(newScore) {
@@ -65,12 +66,14 @@ export function Game(person){
         const date = new Date().toLocaleDateString();
         const newScore = {name: userName, score: score, date: date};
         await fetch('/api/score',{
-            method: 'POST',
+            method: 'post',
             headers: {'content-type':'application/json'},
             body: JSON.stringify(newScore),
         });
     }
     async function guess(str) {
+        console.log(ans);
+        console.log(scripture);
         document.getElementById("guesser").reset();
         setGuesses(prev => [...prev, str]);
         if(str === ans){

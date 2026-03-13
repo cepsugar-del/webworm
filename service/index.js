@@ -78,7 +78,7 @@ app.use(function (err,req,res,next) {
 });
 
 //Returns to default if it enters the unknown
-app.use((requ, res) => {
+app.use((req, res) => {
     res.sendFile('index.html', {root: 'public'});
 });
 
