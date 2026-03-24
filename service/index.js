@@ -3,19 +3,25 @@ const app = express();
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const uuid = require('uuid');
+const DB = require('./database.js');
+
 const authCookieName = 'token';
+
 const port = process.argv.length > 2 ? process.argv[2]:4000;
+
 app.use(express.json());
+
 app.use(cookieParser());
+
 app.use(express.static('public'));
-app.listen(port, () => {
-    console.log(`listening on port ${port}`);
-});
-let users = [];
-let scores = [];
 
 var apiRouter = express.Router();
 app.use(`/api`,apiRouter);
+
+app.listen(port, () => {
+    console.log(`listening on port ${port}`);
+});
+
 //Creaet a user
 apiRouter.post('/auth/create', async(req, res) => {
     if(await findUser('email', req.body.email)) {
@@ -33,6 +39,7 @@ apiRouter.post('/auth/login', async(req,res) =>{
     if(user){
         if (await bcrypt.compare(req.body.password, user.password)){
             user.token = uuid.v4();
+            await DB.updateUser(user);
             setAuthCookie(res, user.token);
             res.send({email:user.email});
             return;
@@ -45,7 +52,7 @@ apiRouter.post('/auth/login', async(req,res) =>{
 apiRouter.delete('/auth/logout',async (req,res)=>{
     const user = await findUser('token', req.cookies[authCookieName]);
     if(user){
-        delete user.token;
+        await DB.updateUserRemoveAuth(user);
     }
     res.clearCookie(authCookieName);
     res.status(204).end();
@@ -63,6 +70,7 @@ const verifyAuth = async (req, res, next) =>{
 
 //Get the scores
 apiRouter.get('/score',verifyAuth, (req,res) => {
+    const scores = DB.getHighScores();
     res.send(scores);
 });
 
@@ -83,21 +91,8 @@ app.use((req, res) => {
 });
 
 function updateScores(newScore){
-    let found = false;
-    for (const [i, prevScore] of scores.entries()){
-        if(newScore.score > prevScore.score){
-            scores.splice(i,0,newScore.score);
-            found = true;
-            break;
-        }
-    }
-    if (!found){
-        scores.push(newScore);
-    }
-    if(scores.length >10){
-        scores.length = 10;
-    }
-    return scores;
+    DB.addScore(newScore);
+    return DB.getHighScores();
 }
 
 async function createUser(email,password){
@@ -106,18 +101,16 @@ async function createUser(email,password){
     const user = {
         email: email, password: passwordHash, token: uuid.v4(),};
     
-    users.push(user);
+    DB.addUser(user);
     return user;
 }
 
 async function findUser(field, value) {
     if (!value) return null;
-    for (const u in users){
-        if (users[u][field] === value){
-            return users[u];
-        }
+    if(field === 'token'){
+        return DB.getUserByToken(value);
     }
-    return undefined;
+    return DB.getUser(value);
 }
 
 function setAuthCookie(res, authToken) {
