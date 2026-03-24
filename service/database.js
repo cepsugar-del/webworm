@@ -11,3 +11,33 @@ const db = client.db('service');
     }
 })();
 
+function getUser(email){
+    return userCollection.findOne({ email:email});
+}
+
+function getUserByToken(t){
+    return userCollection.findOne({token: t});
+}
+
+async function addUser(u){
+    await userCollection.insertOne(u);
+}
+
+async function addUser(u){
+    await userCollection.insertOne(u);
+}
+
+async function updateUser(u){
+    await userCollection.updateOne({email:u.email},{$set:u});
+}
+
+async function addScore(s){
+    return scoreCollection.insertOne(s);
+}
+
+function getHighScores() {
+    const q = { score: { $gt: 0, $lt: 900 } };
+    const o = {sort:{score:-1}, limit: 10};
+    const c = scoreCollection.find(q,o);
+    return c.toArray();
+}
