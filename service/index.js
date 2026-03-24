@@ -16,11 +16,7 @@ app.use(cookieParser());
 app.use(express.static('public'));
 
 var apiRouter = express.Router();
-app.use(`/api`,apiRouter);
-
-app.listen(port, () => {
-    console.log(`listening on port ${port}`);
-});
+app.use(`/api`, apiRouter);
 
 //Creaet a user
 apiRouter.post('/auth/create', async(req, res) => {
@@ -90,8 +86,8 @@ app.use((req, res) => {
     res.sendFile('index.html', {root: 'public'});
 });
 
-function updateScores(newScore){
-    DB.addScore(newScore);
+async function updateScores(newScore){
+    await DB.addScore(newScore);
     return DB.getHighScores();
 }
 
@@ -114,5 +110,9 @@ async function findUser(field, value) {
 }
 
 function setAuthCookie(res, authToken) {
-    res.cookie(authCookieName, authToken,{ secure: true, httpOnly: true, sameSite: 'strict',});
+    res.cookie(authCookieName, authToken,{ maxAge: 1000 * 60 * 60 * 24 * 365, secure: true, httpOnly: true, sameSite: 'strict',});
 };
+
+app.listen(port, () => {
+    console.log(`listening on port ${port}`);
+});
