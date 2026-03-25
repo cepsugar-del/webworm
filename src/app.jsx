@@ -34,7 +34,7 @@ function App() {
           <Route path='*' element={<NotFound />} />
         </Routes>
         <footer>
-          <a href = "">Webworm</a>
+          <a href = "https://github.com/cepsugar-del/webworm.git">Webworm</a>
         </footer>
       </div>
     </BrowserRouter>
