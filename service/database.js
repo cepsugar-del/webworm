@@ -10,6 +10,7 @@ const scoreCollection = db.collection('score');
 (async function testConnection(){
     try{
         await db.command({ ping: 1});
+        console.log("Connection successful!");
     }catch (ex){
         console.log(`Unable to connnect to your database with ${url} because ${ex.message}`);
         process.exit(1);
@@ -35,7 +36,9 @@ async function addUser(u){
 async function updateUser(u){
     await userCollection.updateOne({email:u.email},{$set:u});
 }
-
+async function updateUserRemoveAuth(u){
+    await userCollection.updateOne({email: u.email},{$unset: {token:1}});
+}
 async function addScore(s){
     return scoreCollection.insertOne(s);
 }
@@ -46,3 +49,13 @@ function getHighScores() {
     const c = scoreCollection.find(q,o);
     return c.toArray();
 }
+
+module.exports = {
+    getUser,
+    getUserByToken,
+    addUser,
+    updateUser,
+    updateUserRemoveAuth,
+    addScore,
+    getHighScores,
+};
