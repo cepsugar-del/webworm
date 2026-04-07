@@ -77,7 +77,7 @@ export function Game(person){
         if(str === ans){
             saveScore(scripture.length);
             setDone(true);
-            setpnts("Your Points: " + scripture.length + "\n Your Opponant's points: " + 15);
+            setpnts("Your Points: " + scripture.length + "\nYour Opponant's points: " + 15);
             //when I can get input from other players, this will show the actual score of another human
         }
     }
@@ -101,7 +101,6 @@ export function Game(person){
     </h4>
     <p className = "btn btn-warning smaller"><NavLink to = "/home">Exit game</NavLink></p>
     <p><a className = "btn btn-info smaller" href = "https://github.com/cepsugar-del/webworm.git">My GitHub</a></p>
-    <p className = "in_game">I may have bitten off more than I can chew <img src = 'https://www.clipartmax.com/png/middle/244-2440674_nervous-sweating-emoji-for-kids-smile-with-sweat-emoji.png' width = "10px" ></img></p>
     </div>
     );
 }
