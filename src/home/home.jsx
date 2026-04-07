@@ -43,9 +43,9 @@ export function Home() {
             {leaderboard}
         </tbody>
     </table>
-    <NavLink to = "/game" id = "big" className = "btn btn-success">Big Giant Play Button</NavLink>
+    <Button variant = 'primary' onClick={() => navigate('/game')}>Play</Button>
     <p></p>
-    <NavLink to = "/login" className = "btn btn-primary">Logout</NavLink>
+    <Button variant = 'primary' onClick={() => navigate('/login')}>logout</Button>
     <p></p>
     <a className = "btn btn-info" href = "https://github.com/cepsugar-del/webworm/blob/main/index.html">My GitHub</a>
     </main>);
