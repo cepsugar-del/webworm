@@ -3,6 +3,7 @@ import "../app.css";
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from '../login/login';
 import { Home } from '../home/home';
+import {GameEvent, GameNotifier} from './gameNotifier';
 export function Game(person){
     const userName= person.userName;
     const[possibilities, setPosb] = React.useState([]);
@@ -12,12 +13,14 @@ export function Game(person){
     const [ans,setAns] = React.useState("");
     const [done,setDone] = React.useState(false);
     const [pnts,setpnts] = React.useState("");
+    const [maxpnts, setmax]=React.useState("");
     React.useEffect(() =>{
         fetch('https://Bible-api.com/data/kjv/random')
             .then((response) => response.json())
             .then((data) =>{
                 setAns(`${data.random_verse.book} ${data.random_verse.chapter}:${data.random_verse.verse}`);
                 setScrip(data.random_verse.text);
+                setmax(scripture.length);
             })
             .catch();
         
@@ -70,6 +73,7 @@ export function Game(person){
             headers: {'content-type':'application/json'},
             body: JSON.stringify(newScore),
         });
+        GameNotifier.boradcaseEvent(userName, GameEvent.End, `${newScore}/${maxpnts}`);
     }
     async function guess(str) {
         document.getElementById("guesser").reset();
@@ -77,8 +81,7 @@ export function Game(person){
         if(str === ans){
             saveScore(scripture.length);
             setDone(true);
-            setpnts("Your Points: " + scripture.length + "\nYour Opponant's points: " + 15);
-            //when I can get input from other players, this will show the actual score of another human
+            setpnts("Your Points: " + scripture.length + "\n");
         }
     }
 
@@ -99,6 +102,7 @@ export function Game(person){
     <h4 className = "in_game">
         {pnts}
     </h4>
+    <h4 className = "in_game"></h4>
     <p className = "btn btn-warning smaller"><NavLink to = "/home">Exit game</NavLink></p>
     <p><a className = "btn btn-info smaller" href = "https://github.com/cepsugar-del/webworm.git">My GitHub</a></p>
     </div>
