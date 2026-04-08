@@ -20,8 +20,8 @@ export function Game(person){
             .then((response) => response.json())
             .then((data) =>{
                 setAns(`${data.random_verse.book} ${data.random_verse.chapter}:${data.random_verse.verse}`);
-                setScrip(data.random_verse.text);
-                setmax(data.random_verse.text.length);
+                setScrip(data.random_verse.text.split(" "));
+                setmax(data.random_verse.text.split("").length);
             })
             .catch();
         
@@ -37,7 +37,7 @@ export function Game(person){
                 reveal(r => word + " " + r);
            return next;
             });
-            },200);
+            },750);
         return () => clearInterval(interval);
     },[scripture]);
     function updateScoresLocal(newScore) {
