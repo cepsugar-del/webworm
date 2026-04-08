@@ -6,6 +6,7 @@ import { Home } from '../home/home';
 import {GameEvent, GameNotifier} from './gameNotifier';
 export function Game(person){
     const userName= person.userName;
+    const [events, setEvent] = React.useState([]);
     const[possibilities, setPosb] = React.useState([]);
     const[scripture, setScrip] = React.useState([]);
     const[revealed,reveal] = React.useState("")
@@ -65,6 +66,16 @@ export function Game(person){
 
     localStorage.setItem('scores', JSON.stringify(scores));
     }
+    React.useEffect(() => {
+        GameNotifier.addHandler(handleGameEvent);
+        return () =>{
+            GameNotifier.removeHandler(handleGameEvent);
+        };
+    });
+
+    function handleGameEvent(event){
+        setEvent([...events,event]);
+    }
     async function saveScore(score){
         const date = new Date().toLocaleDateString();
         const newScore = {name: userName, score: score, date: date};
@@ -73,10 +84,11 @@ export function Game(person){
             headers: {'content-type':'application/json'},
             body: JSON.stringify(newScore),
         });
-        GameNotifier.boradcaseEvent(userName, GameEvent.End, newScore);
+        GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
     }
     async function guess(str) {
         document.getElementById("guesser").reset();
+        console.log(ans);
         setGuesses(prev => [...prev, str]);
         if(str === ans){
             saveScore(scripture.length);
@@ -86,7 +98,7 @@ export function Game(person){
     }
     function updateOthers() {
         const otherpeople = [];
-        for(const [i,event] of EventSource.entries()){
+        for(const [i,event] of events.entries()){
             let message = "It's a mystery how this message ever showed up on you screen";
             if(event.type === GameEvent.End){
                 message = `scored ${event.value.score}/${maxpnts}`

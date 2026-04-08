@@ -19,7 +19,7 @@ class Notifier {
     constructor() {
         let port = window.location.port;
         const protocol = window.location.protocol === 'http:' ? 'ws':'wss';
-        this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
+        this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${4000}/ws`);
         this.socket.onopen = (event) =>{
             this.receiveEvent(new Msg('Startup',GameEvent.sys, {msg: 'connected'}));
         };
@@ -51,6 +51,11 @@ class Notifier {
                 handler(e);
             });
         });
+    }
+
+    broadcastEvent(f,t,v){
+        const event = new Msg(f,t,v);
+        this.socket.send(JSON.stringify(event));
     }
 }
 
