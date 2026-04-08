@@ -43,7 +43,7 @@ export function Home() {
             {leaderboard}
         </tbody>
     </table>
-    <Button variant = 'primary' onClick={() => navigate('/game')}>Play</Button>
+    <Button variant = 'primary' onClick={() => navigate('/game')}>Pl</Button>
     <p></p>
     <Button variant = 'primary' onClick={() => navigate('/login')}>logout</Button>
     <p></p>
