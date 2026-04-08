@@ -73,7 +73,7 @@ export function Game(person){
             headers: {'content-type':'application/json'},
             body: JSON.stringify(newScore),
         });
-        GameNotifier.boradcaseEvent(userName, GameEvent.End, `${newScore}/${maxpnts}`);
+        GameNotifier.boradcaseEvent(userName, GameEvent.End, newScore);
     }
     async function guess(str) {
         document.getElementById("guesser").reset();
@@ -83,6 +83,27 @@ export function Game(person){
             setDone(true);
             setpnts("Your Points: " + scripture.length + "\n");
         }
+    }
+    function updateOthers() {
+        const otherpeople = [];
+        for(const [i,event] of EventSource.entries()){
+            let message = "It's a mystery how this message ever showed up on you screen";
+            if(event.type === GameEvent.End){
+                message = `scored ${event.value.score}/${maxpnts}`
+            } else if (event.type === GameEvent.start){
+                message = `wants you to know they're starting a new game now.`;
+            }else if (event.type === GameEvent.System){
+                message = event.value.msg;
+            }
+
+            otherpeople.push(
+                <div key={i} className='event'>
+                <span className={'player-event'}>{event.from.split('@')[0]}</span>
+                {message}
+                </div>
+            );
+        }
+        return otherpeople;
     }
 
     return(
@@ -102,7 +123,8 @@ export function Game(person){
     <h4 className = "in_game">
         {pnts}
     </h4>
-    <h4 className = "in_game"></h4>
+    <h4 className = "in_game">Other's Progress</h4>
+        <span>{userName}</span><div>{updateOthers()}</div>
     <p className = "btn btn-warning smaller"><NavLink to = "/home">Exit game</NavLink></p>
     <p><a className = "btn btn-info smaller" href = "https://github.com/cepsugar-del/webworm.git">My GitHub</a></p>
     </div>
