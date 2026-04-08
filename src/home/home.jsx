@@ -1,8 +1,11 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from '../login/login';
 import { Game } from '../game/game';
 export function Home() {
+    const navigate = useNavigate();
     const [scores, setScores] = React.useState([]);
     React.useEffect(() => {
         fetch('/api/score')
@@ -35,17 +38,19 @@ export function Home() {
     <table className = "t caption-top table table-danger table-striped-columns">
         <caption className = "centered"><b>Leaderboard</b></caption>
         <thead>
+            <tr>
             <th>Name</th>
             <th>Points</th>
             <th>Date</th>
+            </tr>
         </thead>
         <tbody id = 'scores'>
             {leaderboard}
         </tbody>
     </table>
-    <Button variant = 'primary' onClick={() => navigate('/game')}>Pl</Button>
+    <Button variant = 'primary' onClick={() => navigate('/game')}>Play</Button>
     <p></p>
-    <Button variant = 'primary' onClick={() => navigate('/login')}>logout</Button>
+    <Button variant = 'primary' onClick={() => navigate('/')}>logout</Button>
     <p></p>
     <a className = "btn btn-info" href = "https://github.com/cepsugar-del/webworm/blob/main/index.html">My GitHub</a>
     </main>);
