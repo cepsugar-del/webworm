@@ -21,7 +21,7 @@ export function Game(person){
             .then((data) =>{
                 setAns(`${data.random_verse.book} ${data.random_verse.chapter}:${data.random_verse.verse}`);
                 setScrip(data.random_verse.text);
-                setmax(scripture.length);
+                setmax(data.random_verse.text.length);
             })
             .catch();
         
@@ -101,7 +101,7 @@ export function Game(person){
         for(const [i,event] of events.entries()){
             let message = "It's a mystery how this message ever showed up on you screen";
             if(event.type === GameEvent.End){
-                message = `scored ${event.value.score}/${maxpnts}`
+                message = ` scored ${event.value.score}/${maxpnts}`
             } else if (event.type === GameEvent.start){
                 message = `wants you to know they're starting a new game now.`;
             }else if (event.type === GameEvent.System){
