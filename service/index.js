@@ -65,14 +65,14 @@ const verifyAuth = async (req, res, next) =>{
 };
 
 //Get the scores
-apiRouter.get('/score',verifyAuth, (req,res) => {
-    const scores = DB.getHighScores();
+apiRouter.get('/score',verifyAuth, async (req,res) => {
+    const scores = await DB.getHighScores();
     res.send(scores);
 });
 
 //Submit the scores
-apiRouter.post('/score', verifyAuth, (req,res) =>{
-    scores = updateScores(req.body);
+apiRouter.post('/score', verifyAuth, async (req,res) =>{
+    const scores = updateScores(req.body);
     res.send(scores);
 });
 
