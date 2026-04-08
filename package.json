@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/cepsugar-del/webworm#readme",
   "devDependencies": {
-    "vite": "^7.3.1"
+    "vite": "^7.3.2"
   },
   "dependencies": {
     "bootstrap": "^5.3.8",

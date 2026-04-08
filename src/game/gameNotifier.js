@@ -1,4 +1,4 @@
-const event = {
+const GameEvent = {
     sys: 'system',
     end: 'game:end',
     start: 'gameStart',
@@ -21,10 +21,10 @@ class Notifier {
         const protocol = window.location.protocol === 'http:' ? 'ws':'wss';
         this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
         this.socket.onopen = (event) =>{
-            this.receiveEvent(new Msg('Startup',Event.sys, {msg: 'connected'}));
+            this.receiveEvent(new Msg('Startup',GameEvent.sys, {msg: 'connected'}));
         };
         this.socket.onclose = (event) =>{
-            this.receiveEvent(new Msg('Simon', Event.sys, {msg: 'disconnected'}));
+            this.receiveEvent(new Msg('Simon', GameEvent.sys, {msg: 'disconnected'}));
         };
         this.socket.onmessage = async(msg)=>{
             try {
@@ -55,4 +55,4 @@ class Notifier {
 }
 
 const GameNotifier = new Notifier();
-export {Event, Notifier}
+export {GameEvent, GameNotifier}
