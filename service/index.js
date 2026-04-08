@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const uuid = require('uuid');
 const DB = require('./database.js');
-
+const { peerProxy } = require('./peerProxy.js');
 const authCookieName = 'token';
 
 const port = process.argv.length > 2 ? process.argv[2]:4000;
@@ -113,6 +113,8 @@ function setAuthCookie(res, authToken) {
     res.cookie(authCookieName, authToken,{ maxAge: 1000 * 60 * 60 * 24 * 365, secure: true, httpOnly: true, sameSite: 'strict',});
 };
 
-app.listen(port, () => {
+const httpService = app.listen(port, () => {
     console.log(`listening on port ${port}`);
 });
+
+peerProxy(httpService);
